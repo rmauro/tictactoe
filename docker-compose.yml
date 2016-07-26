@@ -1,0 +1,28 @@
+version: '2'
+services:
+  nginx:
+    image: evild/alpine-nginx:1.9.15-openssl
+    container_name: bcomp_nginx
+    links:
+      - php
+    volumes:
+      - ./app:/var/www/html/:ro
+      - ./docker/nginx/conf/nginx.conf:/etc/nginx/conf/nginx.conf:ro
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d:ro
+    ports:
+      - 80:80
+      - 443:443
+  php:
+    image: hayko18/php7-mongo
+    container_name: bcomp_php
+    volumes:
+      - ./app:/var/www/html
+    depends_on:
+      - mongo
+    links:
+      - mongo
+  mongo:
+    image: mongo:latest
+    container_name: becomp_mongodb
+    volumes:
+      - /data/db
