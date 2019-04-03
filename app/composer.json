@@ -1,0 +1,21 @@
+{
+    "name": "rafaelmauro/tictactoe",
+    "description": "A Tic Tac Toe game",
+    "type": "project",
+    "require": {
+        "slim/slim": "^3.12",
+        "phpunit/phpunit": "6.5.0",
+        "pimple/pimple": "~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TicTacToe\\": ["src/","tests/"]
+        }
+    },
+    "authors": [
+        {
+            "name": "Rafael Mauro",
+            "email": "rmauro@gmail.com"
+        }
+    ]
+}
