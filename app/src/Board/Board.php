@@ -10,9 +10,9 @@ class Board
   {
     $this->loader = new Loader($this);
     $this->squares = [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null]
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""]
     ];
   }
 
@@ -27,7 +27,7 @@ class Board
 
   public function setValue($x, $y, $value)
   {
-    if($this->getValue($x,$y) <> null){
+    if($this->getValue($x,$y) <> ""){
       throw new \InvalidArgumentException("Ivalid Argument");
     }
     $this->squares[$x][$y] = $value;

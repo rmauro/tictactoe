@@ -39,13 +39,19 @@ class Analyzer
     if($tied === 8) {
       return '#';
     }
+
+    return "";
   }
 
-  public function nextPlayer()
+  public function nextPlayer($startPlayer)
   {
     $state = $this->board->getState();
     $movesX = $this->countMoves('X', $state);
     $movesO = $this->countMoves('O', $state);
+    
+    if($movesO === $movesX){
+      return $startPlayer;
+    }
     return $movesO < $movesX? 'O': 'X';
   }
 

@@ -17,12 +17,22 @@ services:
     container_name: bcomp_php
     volumes:
       - ./app:/var/www/html
-    depends_on:
-      - mongo
-    links:
-      - mongo
-  mongo:
-    image: mongo:latest
-    container_name: becomp_mongodb
+  composer:
+    restart: 'no'
+    image: composer/composer:php7
+    working_dir: /app
+    command: install 
     volumes:
-      - /data/db
+      - ./app/:/app
+  webapp:
+    container_name: webapp
+    build:
+      context: .
+      dockerfile: 'docker/Dockerfile'
+    volumes:
+      - ./webapp:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development

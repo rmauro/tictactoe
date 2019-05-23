@@ -1,0 +1,32 @@
+.gameboard {
+  width: 320px;
+}
+
+.cell{
+  border: 5px solid #aaa;
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+ }
+
+.loading {
+  cursor: progress
+}
+
+.active-dot{
+  background: center  url("/dot.png") no-repeat;
+  cursor: unset;
+}
+.active-cross{
+  background: center  url("/x.png") no-repeat;
+  cursor: not-allowed;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
